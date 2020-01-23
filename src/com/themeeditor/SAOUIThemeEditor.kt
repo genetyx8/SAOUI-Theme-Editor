@@ -1,9 +1,10 @@
-package com.irregularrhomboid.themeeditor
+package com.themeeditor
 
 import java.awt.EventQueue
 import java.awt.event.ActionEvent
 import java.awt.event.KeyEvent
 import javax.swing.*
+import kotlin.system.exitProcess
 
 class SAOUIThemeEditor(title: String) : JFrame() {
     init {
@@ -16,7 +17,7 @@ class SAOUIThemeEditor(title: String) : JFrame() {
 
         createMenuBar()
 
-        defaultCloseOperation = JFrame.EXIT_ON_CLOSE
+        defaultCloseOperation = EXIT_ON_CLOSE
         setSize(900, 500)
         setLocationRelativeTo(null)
     }
@@ -24,7 +25,6 @@ class SAOUIThemeEditor(title: String) : JFrame() {
     private fun createMenuBar() {
 
         val menubar = JMenuBar()
-        val icon = ImageIcon("src/main/resources/exit.png")
 
         val file = JMenu("File")
         val edit = JMenu("Edit")
@@ -33,10 +33,10 @@ class SAOUIThemeEditor(title: String) : JFrame() {
 
         file.mnemonic = KeyEvent.VK_F
 
-        val eMenuItem = JMenuItem("Exit", icon)
+        val eMenuItem = JMenuItem("Exit", null)
         eMenuItem.mnemonic = KeyEvent.VK_E
         eMenuItem.toolTipText = "Exit application"
-        eMenuItem.addActionListener { _: ActionEvent -> System.exit(0) }
+        eMenuItem.addActionListener { _: ActionEvent -> exitProcess(0) }
 
         file.add(eMenuItem)
 
